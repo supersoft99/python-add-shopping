@@ -1,0 +1,100 @@
+#:kivy 1.0
+#: import * mandel_layouts
+
+<ExploreScreen>:
+    viewclass: 'ExploreView'
+    RecycleBoxLayout:
+        default_size: None, dp(530)
+        default_size_hint: 1, None
+        size_hint_y: None
+        height: self.minimum_height
+        orientation: 'vertical'
+
+
+#The elevation apply outside spacing and elevation must be on root
+<ExploreView> 
+    #extend MDGridLayout
+    height: dp(500)
+    #md_bg_color: 0.1,1,1
+    size_hint:1,None
+    cols: 1
+    pos_hint:{"center_x":0.5}
+    padding:20,0
+    MDWidget:
+        size_hint:1, None
+        height: dp(20)
+    ExploreViewElevated:
+        img:root.img
+        name:root.name
+        description:root.description
+        key: root.key
+    MDWidget:
+        size_hint:1, None
+        height: dp(10)
+
+<ExploreViewElevated>
+#extend MDGridLayout
+    height: dp(500)
+    cols: 1
+    size_hint:None,None
+    pos_hint:{"center_y":0.5,"center_x":0.5}
+    width:app.width * 0.9
+    md_bg_color: 1,1,1,1
+    elevation:10
+    padding:dp(20),dp(10)
+    MDGridLayout:
+        size_hint:1,None
+        height: dp(300)
+        cols: 1
+        #md_bg_color: 1,0.5,1,1
+        padding:dp(20),dp(10)
+        pos_hint:{"center_y":0.5,"center_x":0.5}
+        AsyncImage:
+            md_bg_color:1,1,1,1
+            source: 'image/' + root.img if root.img else ''
+            size_hint:None, None
+            size:app.width-dp(120),app.width-dp(120)
+            allow_stretch: True
+            pos_hint:{"center_y":0.5,"center_x":0.5}
+    MDGridLayout:
+        size_hint: 1, None
+        height: dp(140)
+        cols: 1
+        #md_bg_color: 0.8,1,1,1
+        MDBoxLayout:
+            orientation:'horizontal'
+            size_hint:1, None
+            height: dp(40)
+            padding: dp(10),dp(0),dp(10),dp(0)
+            MDLabel:
+                size_hint:3, None
+                height: dp(40)
+                shorten:True
+                text_size: self.size
+                text:root.name
+                halign: 'left'
+                bold: True
+                font_size: dp(14)
+            MDLabel:
+                size_hint:1, None
+                height: dp(40)
+                shorten:True
+                text_size: self.size
+                text:'$1234'
+                halign: 'right'
+                bold: True
+                font_size: dp(14)
+        MDLabel:
+            #md_bg_color:1,0.8,0.8,1
+            font_size: dp(12)
+            padding: dp(10),dp(10)
+            size_hint:1, None
+            max_lines:6
+            height: dp(90)
+            text: root.description #if "descirption" in root.item else "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nisi erat, pharetra a nunc ac, ultrices malesuada purus. Cras purus purus, tincidunt sed egestas nec, luctus ut ipsum. Pellentesque et risus cursus, accumsan velit eu, rhoncus diam. Quisque aliquet urna ac turpis bibendum vehicula eget vulputate est. Duis et diam faucibus, euismod massa ac, facilisis ligula. Pellentesque interdum euismod maximus. Sed molestie orci vitae metus viverra pharetra. Cras nec nibh vitae neque pharetra fringilla vitae vitae nisl."
+            halign: 'justify'
+            valign:'center'
+
+
+
+

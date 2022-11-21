@@ -1,0 +1,47 @@
+#:kivy 1.0
+<TabScreen>
+    MyMDBottomNavigation:
+
+<MyMDBottomNavigation>:
+    #panel_color: "#eeeaea"
+    name: "btmNav"
+    id:btn_nav
+    selected_color_background: "#000000"
+    text_color_active: "black"
+    MDBottomNavigationItem:
+        id:tab1
+        name: 'home_tab_btn'
+        text: 'HOME'
+        icon: 'home'
+        on_tab_touch_down:
+            root.on_tab_touch_down(1)
+        HomeScreen:
+            id:home_tab
+
+    MDBottomNavigationItem:
+        text: 'Explore'
+        icon: 'home'
+        on_tab_touch_down:
+            root.on_tab_touch_down(1)
+        ExploreScreen:
+            id:explore_tab
+
+
+    MDBottomNavigationItem:
+        name: 'cart'
+        text: 'CART'
+        icon: 'cart'
+        on_tab_touch_down:
+            root.on_tab_touch_down(1)
+        CartScreen:
+            id:cart_tab
+
+
+    MDBottomNavigationItem:
+        name: 'account'
+        text: ' MY ACC'
+        icon: 'account'
+        on_tab_touch_down:
+            root.on_tab_touch_down(1)
+        MyAccountScreen:
+

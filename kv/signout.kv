@@ -1,0 +1,19 @@
+#:kivy 1.0
+<MyAccountScreen@Screen>:
+    name: 'signout'
+    canvas:
+        Color:
+            rgb: app.bgColor
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    AsyncImage:
+            source:'image/bye.png'
+            size_hint: None, None
+            size: dp(100), dp(100)
+            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+    
+    MDLabel:
+        text:'Successfully signed out'
+        halign: 'center'

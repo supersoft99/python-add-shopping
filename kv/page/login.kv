@@ -1,0 +1,65 @@
+<ScreenLogin>:
+    BoxLayout:
+        size_hint: None, None
+        size:300, 400
+        pos_hint: {'center_x': 0.5,'center_y': 0.5}
+        elevation: 10
+        orientation: 'vertical'
+        padding:dp(15)
+        spacing:dp(15)
+
+        AsyncImage:
+            source:'image/sign.png'
+            size_hint: None, None
+            size: dp(100), dp(100)
+            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+        MDLabel:
+            id: label
+            text:'Sign In'
+            fontname:'Arial'
+            font_size:dp(30)
+            bold: True
+            halign:'center'
+            valign:'top' 
+
+        MDTextField:
+            id: txt_user  
+            hint_text:'Username'
+            icon_right:"account"
+            frontname:'Arial'
+            font_size:dp(20)
+            halign: 'center'
+
+        MDTextField:
+            id: txt_password
+            hint_text: 'Password'
+            icon_right:"eye-off"
+            password: True
+            frontname:'Arial'
+            font_size:dp(20)
+            halign: 'center'
+
+        MDFillRoundFlatIconButton:
+            icon: 'login'
+            text: '   Login   '   
+            font_size:dp(20)
+            on_press: root.logger()
+            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+        MDFillRoundFlatIconButton:
+            icon: 'backspace-reverse-outline'
+            text: '   Clear   '   
+            font_size:dp(20)
+            on_press: root.clear()
+            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+        MDFillRoundFlatIconButton:
+            icon: 'account-multiple-plus-outline'
+            text: 'Register'   
+            font_size:dp(20)
+            on_press: root.Register()
+            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+ 
+

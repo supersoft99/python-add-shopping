@@ -1,0 +1,40 @@
+#:kivy 1.0
+<CartScreen>:
+    name:'cart'
+    canvas:
+        Color:
+            rgb:  app.bgColor
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        orientation:'vertical'
+        MDTopAppBar:
+            title: "Shopping Cart"
+            #left_action_items: [["arrow-left", lambda x: app.go_back()]] #tab page has no back button
+        MDLabel:
+            spacing: dp(5)
+            size_hint: 1,None
+            padding:dp(20),0
+            height:dp(40)
+            text:"Subtotal:"
+            font_style:"Subtitle2"
+        MDRaisedButton:
+            spacing: dp(5)
+            size_hint: None, None
+            padding:dp(20),0
+            height:dp(30)
+            text:"Proceed to Checkout"
+            on_press: root.show_dialog()
+        ScrollView:
+            MDGridLayout: #Shopping Cart
+                height: 0 
+                id: shopping_cart
+                md_bg_color:1,1,1,1
+                cols:1
+                size_hint_y:None
+                MDWidget:
+                    md_bg_color:app.bgColor
+                    size_hint:1,None
+                    height:dp(10)
+                

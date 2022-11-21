@@ -1,0 +1,84 @@
+<ImageButton@ButtonBehavior+Image>
+<AddProduct>:
+    source:''
+    BoxLayout:
+        orientation:'vertical'
+        MDTopAppBar:
+            title:'Add Product'
+            left_action_items: [["arrow-left", lambda x: app.go_back()]]
+
+        ScrollView:
+            MDBoxLayout:
+                #md_bg_color:1,0.8,0.9,1
+                adaptive_height:True
+                pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                orientation: 'vertical'
+                padding:dp(20)
+                spacing:dp(20)
+
+                ImageButton:
+                    pos_hint: {'center_x': 0.5}
+                    source:root.source
+                    size_hint:1, None
+                    on_press: root.on_add_image_press()
+                    height: dp(200) #if root.source != '' else 0
+                Carousel:
+                    #trick for conditional component
+                    size_hint:1, None
+                    height:dp(40)
+                    index: 1 if root.source != '' else 0
+                    scroll_timeout: 0.0 # disable the user ability to mess with the widgets layout 
+                    Column: #first option
+                        #background_color:'blue'
+                        # md_bg_color: 'green'
+                        halign:'center'
+                        adaptive_height:True
+                        size_hint_y:None
+                        MDFillRoundFlatIconButton:
+                            icon: 'plus'
+                            text: 'Add Image'
+                            font_size:dp(20)
+                            on_press: root.on_add_image_press()
+                            pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                    BoxLayout:
+                        size_hint_y:None
+                        height:0
+
+                MDTextField:
+                    id: product_name
+                    hint_text:'Product Name'
+                    font_size:dp(12)
+                    halign: 'center'
+                MDTextField:
+                    id: product_category
+                    hint_text: 'Product Category'
+                    font_size:dp(12)
+                    halign: 'center'
+                MDTextField:
+                    id: product_price
+                    hint_text: 'Target Price'
+                    font_size:dp(12)
+                    halign: 'center'
+                MDTextField:
+                    id: product_description
+                    hint_text: 'Product Description'
+                    multiline: True
+                    font_size:dp(12)
+                    halign: 'center'
+                    mode: "rectangle"
+                Widget:
+                    size_hint:None,None
+                    height:dp(10)
+                MDFillRoundFlatIconButton:
+                    icon: 'plus'
+                    text: 'Create'
+                    font_size:dp(20)
+                    on_press: root.on_add_product()
+                    pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+
+
+
+
+
+

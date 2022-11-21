@@ -1,0 +1,16 @@
+<MyFavouriteScreen>:
+    name: 'MyFavouriteScreen'
+    title: 'My Favourite'
+    BoxLayout:
+        orientation:'vertical'
+        MDTopAppBar:
+            title:root.title
+            left_action_items: [["arrow-left", lambda x: app.go_back()]]
+        ScrollView:
+            Column:
+                adaptive_height:True
+                id:column
+                valign:'center'
+                halign:'center'
+                orientation: 'vertical'
+                padding: dp(0)

@@ -1,0 +1,19 @@
+<ProductCarouselImage>:#@Image
+    canvas.before:
+        Color:
+            rgba: 1,1,1,1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    source: ''
+    size_hint:None, None
+    size:dp(100),dp(100)
+    allow_stretch: True
+    pos_hint:{"center_y":0.5}
+
+<ProductGridImage>:#@Image
+    source:''
+    size_hint:None,None
+    size:   0.4 * app.width, 0.4 * app.width
+    allow_stretch: True
+

@@ -1,0 +1,104 @@
+#:kivy 1.0
+#: import Image kivy.uix.image.Image
+##: import ProductImage index.ProductImage
+<Register>:       
+    ScrollView:
+        do_scroll_y:True
+        do_scroll_x:False
+        size_hint: 0.8,0.8
+        pos_hint: {'center_x': 0.5,'center_y': 0.5}
+    
+        MDGridLayout:
+            cols:1
+            adaptive_height: True
+            spacing:5
+
+            AsyncImage:
+                source:'image/reg.png'
+                size_hint: None, None
+                size: dp(120), dp(120)
+                pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+            MDLabel:
+                id: label
+                text:'Registration'
+                fontname:'Arial'
+                font_size:dp(25)
+                bold: True
+                halign:'center'
+                valign:'top'
+
+            MDTextField:
+                id: txt_name
+                hint_text: 'Name'
+                frontname:'Arial'
+                font_size:dp(20)
+                halign: 'center'
+            
+            MDTextField:
+                id: txt_email
+                hint_text: 'Email'
+                frontname:'Arial'
+                font_size:dp(20)
+                halign: 'center'
+
+            MDTextField:
+                id: txt_phone
+                hint_text: 'Phone Number'
+                frontname:'Arial'
+                font_size:dp(20)
+                halign: 'center'    
+
+            MDTextField:
+                id: txt_address
+                hint_text: 'Address'
+                frontname:'Arial'
+                font_size:dp(20)
+                halign: 'center'
+
+            MDTextField:
+                id: txt_username  
+                hint_text:'Username'
+                frontname:'Arial'
+                font_size:dp(20)
+                halign: 'center'
+
+            MDTextField:
+                id: txt_password
+                hint_text: 'Password'
+                password: True
+                frontname:'Arial'
+                font_size:dp(20)
+                halign: 'center'
+
+            MDTextField:
+                id: txt_repassword
+                hint_text: 'Re-enter Password'
+                password: True
+                frontname:'Arial'
+                font_size:dp(20)
+                halign: 'center'
+
+            MDFillRoundFlatIconButton:
+                icon: 'account-multiple-plus-outline'
+                text: 'Register'   
+                font_size:dp(20)
+                on_press: root.button_Reg()
+                pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                size_hint:(0.5,0.5)
+
+            MDFillRoundFlatIconButton:
+                icon: 'backspace-reverse-outline'
+                text: 'Clear'   
+                font_size:dp(20)
+                on_press: root.button_clear()
+                pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                size_hint:(0.5,0.5)
+            
+            MDFillRoundFlatIconButton:
+                icon: 'backup-restore'
+                text: 'Back'   
+                font_size:dp(20)
+                on_press: root.button_back()
+                pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                size_hint:(0.5,0.5)

@@ -1,0 +1,24 @@
+<MyAccountUpdateScreen>:
+    name: 'MyAccountUpdateScreen'
+    title: ''
+    BoxLayout:
+        orientation:'vertical'
+        MDTopAppBar:
+            title:root.title
+            left_action_items: [["arrow-left", lambda x: app.go_back()]]
+        Column:
+            valign:'center'
+            orientation: 'vertical'
+            padding: dp(40)
+
+            MDTextField:
+                id: field_name
+                hint_text: 'Address'
+
+            Widget:
+                size_hint: 1,None
+                height: dp(50)
+
+            MDRaisedButton:
+                text: "Save"
+                on_press: root.save_button_click(root.ids.field_name)

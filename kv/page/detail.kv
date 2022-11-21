@@ -1,0 +1,26 @@
+<DetailScreen>:
+    #right_action_items:'trash'
+    item:{"category":'null',"name":"null"}
+    name:'detail'
+    canvas:
+        Color:
+            rgb:  app.bgColor
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        orientation:'vertical'
+        MDTopAppBar:
+            id:topBar
+            on_kv_post: self.ids.label_title.font_size = '14dp'
+            title:root.item["name"]
+            left_action_items: [["arrow-left", lambda x: app.go_back()]]
+        MDLabel:
+            text: "item selected:" + str(root.item["category"]) + " " + root.item["name"]
+            halign: 'center'
+        MDRaisedButton:
+            text: 'Add to Cart'
+            halign:'center'
+            valign: 'center'
+            on_press: print("You selected " + root.item["name"])
+            # on_press: root.item.fillCart()

@@ -1,0 +1,123 @@
+#:kivy 1.0
+#: import * mandel_layouts
+
+<MyAccountScreen>:
+    name: 'account'
+    canvas:
+        Color:
+            rgb: 1,1,1,1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    ScrollView:
+        Column:
+            adaptive_height:True
+            Row:
+                halign:'center'
+                valign:'center'
+                #background_color:'red'
+                adaptive_size:True
+                size_hint:1,None
+                height:dp(200)
+                MDIconButton:
+                    icon: "image/avator.png"
+                    md_bg_color:0,0,0,1
+                    adaptive_height: True
+                    icon_size:dp(150)
+            Row:
+                adaptive_height: True
+                size_hint:1,None
+                halign: 'center'
+                padding: dp(30),dp(30),dp(30),dp(0)
+                # LabelIconButton:
+                #     on_press:root.on_order_status_press(self.text,self.field)
+                #     icon:"cash-clock"
+                #     text:"Pending" # to be used in ToolBar Title for i18n consideration, separete the field
+                #     field:'pending' # to be used for db query
+                LabelIconButton:
+                    on_press:root.on_order_status_press(self.text,self.field)
+                    icon:"cash-check"
+                    text:"Paid"
+                    field:'paid'
+                LabelIconButton:
+                    on_press:root.on_order_status_press(self.text,self.field)
+                    icon:"truck-delivery-outline"
+                    text:"Delivering"
+                    field:'delivering'
+                LabelIconButton:
+                    on_press:root.on_order_status_press(self.text,self.field)
+                    icon:"gift-open"
+                    text:"Received"
+                    field:'received'
+
+            ProfileRow:
+                title: 'Edit Delivery Address'
+                field: 'Address'
+                icon: 'home'
+                on_press: root.on_my_acc_update(self.field)
+
+            ProfileRow:
+                title: 'Edit Phone No'
+                field: 'Phone'
+                icon: 'phone'
+                on_press: root.on_my_acc_update(self.field)
+
+            ProfileRow:
+                title: 'Top Up Fund'
+                field: 'Fund'
+                icon: 'cash'
+                on_press: root.on_my_acc_update(self.field)
+
+            ProfileRow:
+                title: 'Add Product (Seller Only)'
+                icon: 'plus'
+                on_press: app.show_screen('AddProduct')
+            ProfileRow:
+                title: 'My Product (Seller Only)'
+                icon: 'book'
+                on_press: app.show_screen('MyProductScreen')
+            ProfileRow:
+                title: 'My Favourite'
+                icon: 'cards-heart'
+                on_press: app.show_screen('MyFavouriteScreen')
+
+<ProfileRow@ListItem>
+    title:''
+    field:''
+    icon:''
+    size_hint:1,None
+    Lead:
+        background_color: 1,1,1,1
+        MDIcon:
+            icon: root.icon
+    Tail:
+        background_color: 1,1,1,1
+        MDIconButton:
+            icon: 'arrow-right'
+            icon_size: "30sp"
+
+<LabelIconButton>
+    icon:""
+    text: ""
+    adaptive_height: True
+    size_hint: 1, None
+    background_color: 1,1,1,1
+    halign:'center'
+    #on_press:print(root.text)
+    MDIconButton:
+        on_press:root.on_press()
+        icon: root.icon
+        icon_size: "40sp"
+        font_size: "40sp"
+        #md_bg_color:0.5,0.6,0.7,1
+        halign:'center'
+        valign:'bottom'
+    MDLabel:
+        #md_bg_color:0.7,1,0.1,1
+        valign:'top'
+        text:root.text
+        texture_size:1,dp(15)
+        height:dp(15)
+        size_hint_y:None
+        halign:'center'
+        color:0,0,0,1

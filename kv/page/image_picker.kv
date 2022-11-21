@@ -1,0 +1,21 @@
+#:import * mandel_layouts
+<ImagePicker>:
+    Column:
+        FileManager:
+            id: manager
+            #mode: 'dark'
+            #selection_mode: 'multi'
+            #selection_mode: 'folder'
+            #init_path: '.'
+            file_types: ['png', 'jpg', 'jpeg','webp']
+            #on_item_press: root.select_callback()
+
+        Row:
+            halign: 'right'
+            adaptive_height: True
+            padding: dp(10)
+            spacing: dp(10)
+            background_color: 1,1,1,.1
+            MDFillRoundFlatButton:
+                text: 'Choose'
+                on_press: root.on_image_chosen()

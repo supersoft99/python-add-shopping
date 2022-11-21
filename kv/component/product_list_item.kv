@@ -1,0 +1,50 @@
+<ProductListItem>:
+    item:{"price":"100","name":"item name","discount":"15","images":[""] }
+    size_hint: 1,None
+    size: 0, dp(100)
+    padding: dp(10),dp(0)
+    Image:
+        canvas.before:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        source: "image/"+root.item['images'][0] 
+        size_hint:None, None
+        size: dp(90),dp(90)
+        allow_stretch: True
+        pos_hint:{"center_y":0.5}
+    BoxLayout:
+        padding: dp(20),dp(5)
+        orientation:'vertical'
+        Label:
+            canvas.before:
+                Color:
+                    rgba: 1,0,0,1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint: None, 1
+            size: dp(70), dp(10)
+            padding:[0,0]
+            height:dp(30)
+            halign: 'center'
+            markup : True
+            font_size : dp(13)
+            text: '[color=ffffff]' + str(root.item['discount']) +'% off[/color]' if "discount" in root.item  else '[color=ffffff]15% off[/color]'
+        Label:
+            height: dp(30)
+            text_size: self.size
+            halign: 'left'
+            markup : True
+            text:'[color=111111]HKD '+str(root.item["price"])+'[/color]'
+            size_hint:(1, 1.5)
+        Label:
+            height: dp(80)
+            text_size: self.size
+            halign: 'left'
+            valign: 'bottom'
+            markup : True
+            text:'[color=111111]'+root.item["name"]+'[/color]'
+            size_hint:(1, 2)
