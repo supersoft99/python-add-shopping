@@ -70,6 +70,19 @@ class DetailScreen(Screen):
         app = MDApp.get_running_app()
         #self.isTrash = len(app.screenmanager.children) >=2 and app.screenmanager.children[1].name == 'MyProductScreen'
         self.item = app.detail
+
+        # set item data to screen
+
+        self.ids.brand_box.text = "Brand: {}".format(str(app.detail["brand"])) if ('brand' in app.detail) else "Brand: Brand Name"
+        self.ids.img_box.source = "image/{}".format(app.detail['images'][0])
+        self.ids.author_box.text = str(app.detail["create_by"])
+        self.ids.category_box.text = str(app.detail["category"])
+        self.ids.desc_box.text = str(app.detail["description"])
+        self.ids.price_box.text = 'HKD {}'.format(app.detail["price"])
+
+        self.ids.scroll_box.scroll_y = 1
+
+
     # def on_pre_enter(self):
     #    app = MDApp.get_running_app()
         if  'MyProductScreen' in app.last_screens:

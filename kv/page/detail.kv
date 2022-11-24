@@ -10,17 +10,148 @@
             size: self.size
     BoxLayout:
         orientation:'vertical'
+        spacing: 20
         MDTopAppBar:
             id:topBar
             on_kv_post: self.ids.label_title.font_size = '14dp'
-            title:root.item["name"]
+            title:app.detail["name"]
             left_action_items: [["arrow-left", lambda x: app.go_back()]]
-        MDLabel:
-            text: "item selected:" + str(root.item["category"]) + " " + root.item["name"]
-            halign: 'center'
-        MDRaisedButton:
-            text: 'Add to Cart'
-            halign:'center'
-            valign: 'center'
-            on_press: print("You selected " + root.item["name"])
-            # on_press: root.item.fillCart()
+
+        ScrollView:
+            id: scroll_box
+            pos_hint:{"center_x":0.5,"center_y":0.5}
+            MDGridLayout:
+                id: my_layout
+                cols:1
+                adaptive_height: True
+                padding: 20
+                spacing: 10
+
+                MDLabel:
+                    id: brand_box
+                    #text: "Brand: {}".format(str(app.detail["brand"])) if ('brand' in app.detail) else "Brand: Brand Name"
+                    halign: 'left'
+                    theme_text_color: "Custom"
+                    text_color: "#2196F3"
+                    font_size: "14sp"
+
+
+                MDLabel:
+                    size_hint_y: None
+                    text: app.detail["name"]
+                    halign: 'left'
+                    theme_text_color: "Custom"
+                    text_color: "#00000"
+                    font_size: "16sp"
+                    bold: True
+                    height: '60sp'
+
+
+                Image:
+                    id: img_box
+                    #source: "image/{}".format(app.detail['images'][0]) if ('images' in app.detail) else "image/loading.png"
+                    size_hint: 1, None
+                    size: dp(200),dp(200)
+                    allow_stretch: True
+                    pos_hint:{"center_y":0.5}
+
+
+                MDLabel:
+                    id: price_box
+                    size_hint_y: None
+                    #text: 'HKD {}'.format(app.detail["price"])
+                    halign: 'left'
+                    theme_text_color: "Custom"
+                    text_color: "#00000"
+                    font_size: "16sp"
+                    bold: True
+                    height: '50sp'
+
+                   
+                MDRaisedButton:
+                    text: 'Add to Cart'
+                    size_hint_x: .7
+                    halign:'center'
+                    valign: 'center'
+                    on_press: print("You selected " + app.detail["name"])
+                    # on_press: app.detail.fillCart()
+
+
+                    
+                    
+                MDGridLayout:
+                    cols: 2
+                    padding: 10
+                    spacing: 10
+                    size_hint_y: None
+                    height: '80sp'
+                    MDLabel:
+                        height: '30sp'
+                        size_hint_y: None
+                        text: 'Sold By'
+                        halign: 'left'
+                        theme_text_color: "Custom"
+                        text_color: "#83bbb6"
+                        font_size: "13sp"
+                        bold: True
+
+                    MDLabel:
+                        height: '30sp'
+                        id: author_box
+                        size_hint_y: None
+                        #text: str(app.detail["create_by"])
+                        halign: 'left'
+                        theme_text_color: "Custom"
+                        text_color: "#00000"
+                        font_size: "13sp"
+
+
+                    MDLabel:
+                        height: '30sp'
+                        size_hint_y: None
+                        text: 'Category:'
+                        halign: 'left'
+                        theme_text_color: "Custom"
+                        text_color: "#83bbb6"
+                        font_size: "14sp"
+                        bold: True
+
+                    MDLabel:
+                        height: '30sp'
+                        id: category_box
+                        size_hint_y: None
+                        text: str(app.detail["category"])
+                        halign: 'left'
+                        theme_text_color: "Custom"
+                        text_color: "#00000"
+                        font_size: "14sp"
+
+
+                MDLabel:
+                    size_hint_y: None
+                    height: '40sp'
+                    text: 'Decsription'
+                    halign: 'left'
+                    theme_text_color: "Custom"
+                    text_color: "#00000"
+                    font_size: "16sp"
+                    bold: True
+
+
+                ScrollView:
+                    size_hint: 1, None
+                    height: '200sp'
+                    MDLabel:
+                        id: desc_box
+                        size_hint_y: None
+                        size: self.texture_size
+                        #text: app.detail["description"]
+                        #text_size: self.width-20, self.height
+                        halign: 'left'
+                        text_size: self.size
+                        theme_text_color: "Custom"
+                        text_color: "#00000"
+                        font_size: "16sp"
+                        height: '80sp'
+              
+

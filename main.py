@@ -124,7 +124,7 @@ class Main(MDApp):
                 self.tab.ids.tab1.children[0].ids.my_layout.cols = 1
 
     def build(self):
-        height = 800
+        height = 700
         width = 400
         if platform in ('win'):
             height = 800
